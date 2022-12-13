@@ -72,10 +72,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------*/
-body::-webkit-scrollbar {
-  display: none;
-}
-
 html, body, main {
   min-height: 100%;
   height: 100%;
@@ -159,6 +155,7 @@ html, body, main {
 .dayTasks__tasks {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 .dayTasks__emptyArea {
   pointer-events: none;

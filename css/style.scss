@@ -1,8 +1,8 @@
 
 @import "nullstyle.scss";
-body::-webkit-scrollbar{
-	display: none;
-}
+// body::-webkit-scrollbar{
+// 	display: none;
+// }
 
 html, body, main {
     min-height: 100%;
@@ -110,6 +110,7 @@ html, body, main {
 	&__tasks {
 		display: flex;
 		flex-direction: column;
+		overflow: hidden;
 	}
 
 	&__emptyArea {
