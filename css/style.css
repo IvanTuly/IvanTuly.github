@@ -159,6 +159,9 @@ html, body, main {
 .dayTasks__tasks {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 .dayTasks__emptyArea {
   pointer-events: none;
