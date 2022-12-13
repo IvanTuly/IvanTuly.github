@@ -32,9 +32,12 @@ html, body, main {
 }
 
 .footer {
+	min-width: 100%;
 	margin: 0 auto;
-	padding: 0 0 10px 0;
+	padding: 5px 0 10px 0;
 	color: gray;
+	background-color: rgb(240, 240, 240);
+	text-align: center;
 	&__row {
 	}
 
@@ -87,6 +90,8 @@ html, body, main {
 		display: flex;
 		font-family: Inter;
 		border-bottom: 1px solid #eaeaea;
+
+		height: 17px;
 		/* Параметры линии */
 
 	}
@@ -127,6 +132,8 @@ html, body, main {
 
 .text{
 	text-overflow: ellipsis;
+	font-size: 10px;
+	color: red;
 }
 
 .text:hover {
@@ -161,7 +168,7 @@ textarea {
 	background-image:
 		-webkit-linear-gradient(top, transparent, transparent 15.6px, #eaeaea 0);
 
-	-webkit-background-size: 100% 16.6px;
+	-webkit-background-size: 100% 17px;
 	/* background-size: 100% 50px; */
 }
 
