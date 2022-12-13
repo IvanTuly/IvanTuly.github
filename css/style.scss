@@ -1,11 +1,7 @@
 
 @import "nullstyle.scss";
 
-*{
-	overflow: hidden; /* Скрываем scrollbars */
-	overflow-x: hidden;
-	overflow-y: hidden;
-}
+
 
 html, body, main {
     min-height: 100%;
@@ -113,7 +109,7 @@ html, body, main {
 	&__tasks {
 		display: flex;
 		flex-direction: column;
-		overflow: scroll;
+		overflow: hidden;
 
 	}
 

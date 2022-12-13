@@ -72,12 +72,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------*/
-* {
-  overflow: hidden; /* Скрываем scrollbars */
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
 html, body, main {
   min-height: 100%;
   height: 100%;
@@ -161,7 +155,7 @@ html, body, main {
 .dayTasks__tasks {
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow: hidden;
 }
 .dayTasks__emptyArea {
   pointer-events: none;
