@@ -110,9 +110,6 @@ html, body, main {
 	&__tasks {
 		display: flex;
 		flex-direction: column;
-		overflow: hidden;
-		overflow-x: hidden;
-		overflow-y: hidden;
 	}
 
 	&__emptyArea {
