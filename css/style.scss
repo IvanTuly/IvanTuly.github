@@ -3,6 +3,8 @@
 
 *{
 	overflow: hidden; /* Скрываем scrollbars */
+	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 html, body, main {
