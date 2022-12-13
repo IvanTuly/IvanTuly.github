@@ -1,7 +1,8 @@
 
 @import "nullstyle.scss";
-
-
+*{
+	overflow: hidden;
+}
 
 html, body, main {
     min-height: 100%;
@@ -110,7 +111,6 @@ html, body, main {
 		display: flex;
 		flex-direction: column;
 		overflow: hidden;
-
 	}
 
 	&__emptyArea {
