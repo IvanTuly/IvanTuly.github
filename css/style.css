@@ -172,7 +172,6 @@ html, body, main {
 .text {
   text-overflow: ellipsis;
   font-size: 10px;
-  color: red;
 }
 
 .task__date {
@@ -232,4 +231,28 @@ textarea {
   src: url("../fonts/Inter-VariableFont_slnt,wght.ttf") format("truetype");
   font-style: normal;
   font-weight: 200;
+}
+@media only screen and (max-width: 600px) {
+  html, body, main {
+    min-height: 100%;
+    height: 100%;
+  }
+  .dayTasks__row {
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+  }
+  .dayTasks__task {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #eaeaea;
+    min-height: 30vh;
+    margin: 0 0 2em 0;
+  }
+  .dayTasks__emptyArea {
+    flex: 1 1 auto;
+  }
+  .text {
+    font-size: 12px;
+  }
 }/*# sourceMappingURL=style.css.map */
