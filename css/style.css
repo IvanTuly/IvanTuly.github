@@ -72,6 +72,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------*/
+* {
+  overflow: hidden; /* Скрываем scrollbars */
+}
+
 html, body, main {
   min-height: 100%;
   height: 100%;
@@ -232,7 +236,7 @@ textarea {
   font-style: normal;
   font-weight: 200;
 }
-@media only screen and (max-width: 600px) {
+@media all and (max-width: 1082px) {
   html, body, main {
     min-height: 100%;
     height: 100%;

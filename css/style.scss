@@ -1,9 +1,11 @@
 
 @import "nullstyle.scss";
 
+*{
+	overflow: hidden; /* Скрываем scrollbars */
+}
 
 html, body, main {
-	overflow: hidden; /* Скрываем scrollbars */
     min-height: 100%;
     height: 100%;
 }
