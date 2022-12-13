@@ -72,8 +72,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------*/
-* {
-  overflow: hidden;
+body::-webkit-scrollbar {
+  display: none;
 }
 
 html, body, main {
@@ -159,9 +159,6 @@ html, body, main {
 .dayTasks__tasks {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  overflow-x: hidden;
-  overflow-y: hidden;
 }
 .dayTasks__emptyArea {
   pointer-events: none;
