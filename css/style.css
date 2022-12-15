@@ -232,7 +232,7 @@ textarea {
   font-style: normal;
   font-weight: 200;
 }
-@media all and (max-width: 1082px) {
+@media all and (max-width: 800px) {
   html, body, main {
     min-height: 100%;
     height: 100%;
