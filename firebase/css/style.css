@@ -1,0 +1,179 @@
+@charset "UTF-8";
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*--------------------*/
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: rgb(240, 240, 240);
+}
+
+.signUp {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  padding: 20px;
+  border: 1px solid orange;
+  background-color: #fff;
+}
+.signUp__head {
+  text-align: center;
+  margin: 20px 0 40px 0;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.signUp__email {
+  margin: 0 0 15px 0;
+}
+.signUp__name {
+  margin: 0 0 15px 0;
+}
+.signUp__password {
+  margin: 0 0 15px 0;
+}
+.signUp__button {
+  margin: 0 0 15px 0;
+  color: white;
+  background-color: rgb(120, 177, 252);
+  padding: 5px 0;
+  font-size: 18px;
+}
+.signUp__logIn {
+  display: flex;
+  justify-content: center;
+}
+.signUp_logInText {
+  padding: 0 10px 0 0;
+}
+.signUp__logInButton {
+  color: rgb(0, 102, 255);
+  background-color: #fff;
+}
+
+.logIn {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  padding: 20px;
+  border: 1px solid orange;
+  background-color: #fff;
+}
+.logIn__head {
+  text-align: center;
+  margin: 20px 0 40px 0;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.logIn__email {
+  margin: 0 0 15px 0;
+}
+.logIn__password {
+  margin: 0 0 15px 0;
+}
+.logIn__button {
+  margin: 0 0 15px 0;
+  color: white;
+  background-color: rgb(120, 177, 252);
+  padding: 5px 0;
+  font-size: 18px;
+}
+.logIn__signUp {
+  display: flex;
+  justify-content: center;
+}
+.logIn_SignUpText {
+  padding: 0 10px 0 0;
+}
+.logIn__SignUpButton {
+  color: rgb(0, 102, 255);
+  background-color: #fff;
+}
+
+input {
+  background-color: rgb(235, 235, 235);
+  font-size: 14px;
+  padding: 12px 10px;
+}
+
+.logIn-unactive {
+  display: none;
+}
+
+.signUp-unactive {
+  display: none;
+}/*# sourceMappingURL=style.css.map */
