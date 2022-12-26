@@ -19,6 +19,7 @@ if (localStorage.getItem('tasks')) {
 //проверяем массив на пустые задачи
 chekNullItemsInArray();
 
+
 //рендерим таблицу задач
 renderWeekTasks(date);
 
@@ -70,7 +71,7 @@ function deleteByClick() {
 //функция добавления новой задачи в массив
 function addTask(newTaskValue, newTaskDate) {
 
-    newTaskID = Date.now()
+    var newTaskID = Date.now()
     //объект создаваемой задачи, хранит id, текст и статус, выполнена/не выполнена.
     const newTask = {
         //id по мс текущего времени
@@ -91,7 +92,7 @@ function addTask(newTaskValue, newTaskDate) {
 function editTask(event) {
     //получаем значение input, каждый раз, когда меняем данные
     const task = event.target;
-    taskValue = task.value;
+    var taskValue = task.value;
     const id = Number(task.id);
 
     //делаем проверку: задача новая или уже существует, у новых задач нет id
@@ -105,7 +106,7 @@ function editTask(event) {
         const dateValue = date.value;
 
         //вызываем функцию добавления новой задачи и получаем из нее id новой задачи
-        newTaskID = addTask(taskValue, dateValue);
+        const newTaskID = addTask(taskValue, dateValue);
         //устанавливаем id задачи, если она не была создана
         task.setAttribute("id", newTaskID);
         //устанавливаем значение в value
@@ -162,7 +163,7 @@ function deleteTaskErase(event) {
     const parentNode = event.target.closest('.dayTasks__data');
     //получаем значение input, каждый раз, когда меняем данные
     const task = event.target;
-    taskValue = task.value;
+    const taskValue = task.value;
     //ищем id
     const taskID = Number(task.id);
 
@@ -246,6 +247,7 @@ function doneTask(event) {
 //сохранение в localStorage
 function saveToLocalStorage() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
+    saveToFirebase(JSON.stringify(tasks));
 }
 
 //функция рендерит кнопки у новой задачи
@@ -304,7 +306,7 @@ function renderWeekTasks(date) {
         //вызываем функцию для рендера дня недели с задачами
         renderTask(dayTask, dateTask, today);
         //обновляем день на следующий день недели
-        newDay = dayWeek.getTime() + 86400000;
+        var newDay = dayWeek.getTime()+86400000;
         dayWeek.setTime(newDay);
     }
 }//END renderWeekTasks
@@ -662,5 +664,54 @@ function saveTaskToEnd(parentNode, id) {
 
 }
 
+
+
+//получаем email из indexedDB firebase
+
+//открываем бд
+var openRequest = indexedDB.open('firebaseLocalStorageDb',1)
+
+//если успешно
+openRequest.onsuccess = function(event){
+    //получаем что внутри
+    var db = event.target.result;
+
+    //посылаем get запрос через транзакцию - так работает .getAll-все содержимое 
+    const request = db.transaction('firebaseLocalStorage')
+    .objectStore('firebaseLocalStorage')
+    .getAll();
+
+    //если get запрос выполнет, то полуачам данные в переменную user
+    request.onsuccess = ()=> {
+    const user = request.result;
+    if (user.length !=0){
+        // console.log('Got user');
+        // console.log(user[0].value.email)
+        const userEmail = document.querySelector(".login__user");
+        userEmail.innerText = user[0].value.email;
+        userEmail.classList.remove("empty");
+        const logInButton = document.querySelector(".login__button");
+        logInButton.classList.add("empty")
+
+    };
+    };
+
+    //если get запрос не выполнен, то пользователь не авторизован
+    request.onerror = (err)=> {
+        console.error(`Error to get user: ${err}`)
+        const userEmail = document.querySelector(".login__user");
+        userEmail.innerText = "";
+        userEmail.classList.add("empty");
+        const logInButton = document.querySelector(".login__button");
+        logInButton.classList.remove("empty")
+
+    }
+};
+
+
 // });
+
+import {saveToFirebase} from '../firebase/js/firebase.js';
+
+
 

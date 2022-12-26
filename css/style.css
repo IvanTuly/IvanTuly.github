@@ -85,10 +85,14 @@ html, body, main {
 
 .menu {
   margin: 0 0 30px 0;
-}
-.menu__square {
+  display: flex;
   background-color: red;
   min-width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.menu__square {
+  flex: 1 1 auto;
   height: 40px;
   font-family: AlternateGothic;
   text-align: center;
@@ -96,6 +100,13 @@ html, body, main {
   font-size: 2.5em;
   color: white;
   padding: 4px 0 0 0;
+}
+.menu__login {
+  padding: 0 50px 0 0;
+}
+
+.empty {
+  display: none;
 }
 
 .footer {
