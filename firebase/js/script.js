@@ -1,5 +1,3 @@
-
-
 const signUp = document.querySelector(".signUp");
 const logIn = document.querySelector(".logIn");
 const signUpButton = document.querySelector(".signUp__button");
@@ -30,12 +28,12 @@ signUpButton.addEventListener("click", ()=>{
     const name = nameSignUp.value;
     const pass = passwordSignUp.value;
     console.log(email, name, pass)
-    
+
 })
 
 logInButton.addEventListener("click", ()=>{
     const email = emailLogIn.value;
-    const pass = emailLogIn.value;
+    const pass = passwordLogIn.value;
     console.log(email, pass)
 
 })
