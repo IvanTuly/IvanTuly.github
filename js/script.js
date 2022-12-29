@@ -1,7 +1,6 @@
 //массив с задачами и их статусом 
 let tasks = [];
 
-
 // //как только страница загрузится
 // window.addEventListener('load', () => {
 
@@ -247,7 +246,6 @@ function doneTask(event) {
 //сохранение в localStorage
 function saveToLocalStorage() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
-    saveToFirebase(JSON.stringify(tasks));
 }
 
 //функция рендерит кнопки у новой задачи
@@ -711,7 +709,11 @@ openRequest.onsuccess = function(event){
 
 // });
 
-import {saveToFirebase} from '../firebase/js/firebase.js';
+// import {saveToFirebase, getFileFromFirebase} from '../firebase/js/firebase.js';
+
+// getFromFirebase();
+// saveToFirebase();
+
 
 
 
