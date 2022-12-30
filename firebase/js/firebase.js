@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 import { getStorage, getDownloadURL, uploadBytes } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
-import { getDatabase, ref, set, child, update, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
 
 
@@ -81,6 +81,7 @@ if (logInButton != null) {
                                 const user = userCredential.user;
                                 console.log(user);
                                 alert(user.email + "Login successfully!!!");
+                                
                         }).catch((error) => {
                                 const errorCode = error.code;
                                 const errorMessage = error.message;
@@ -122,6 +123,7 @@ onAuthStateChanged(auth, (user) => {
                 // https://firebase.google.com/docs/reference/js/firebase.User
                 uid = user.uid;
                 console.log(user.email)
+                getFileFromFirebase(uid)
 
                 // ...
         } else {
@@ -133,9 +135,6 @@ onAuthStateChanged(auth, (user) => {
 
 
 export function saveToFirebase(tasks) {
-        console.log(tasks)
-        console.log(uid)
-
         if (uid != ""){
                 set(ref(db, 'users/' + uid), {
                         tasks
@@ -147,90 +146,47 @@ export function saveToFirebase(tasks) {
                         console.log("error"+error)
                       })
         } else {
-                alert("to store your data you need log in")
+                console.log("to store your data you need log in");
         }
-
-        // // create a Blob from the JSON-string
-        // var blob = new Blob([jsonString], { type: "application/json" })
-        // if (blob != undefined) {
-        //         const storageRef = ref(storage, `${uid}.json`);
-        //         uploadBytes(storageRef, blob).then((snapshot) => {
-        //                 console.log('Uploaded a blob or file!');
-        //         });
-        // }
-
 }
 
 
 
-export function getFileFromFirebase() {
-        onAuthStateChanged(auth, (user) => {
-                if (user) {
+
+export function getFileFromFirebase(userUID) {
+        console.log("User UID = " + userUID)
+        var tasksFromFirebase
+
+
                         // User is signed in, see docs for a list of available properties
                         // https://firebase.google.com/docs/reference/js/firebase.User
-                        uid = user.uid;
-                        console.log(uid)
-
-                        // ...
-                } else {
-                        // User is signed out
-                        // ...
-                }
-        });
-
-        const starsRef = ref(storage, `PG53EmrFALWtJhPTRl88A4O368u1.json`);
-
-        // Get the download URL
-        getDownloadURL(starsRef)
-                .then((url) => {
+                        
                         
 
-                        // `url` is the download URL for 'images/stars.jpg'
+                        const dbRef = ref(getDatabase());
+                        get(child(dbRef, `users/${userUID}/tasks`)).then((snapshot) => {
+                                console.log("get запрос ")
+                          if (snapshot.exists()) {
+                                console.log("данные из firebase");
+                                console.log(snapshot.val());
+                                tasksFromFirebase = snapshot.val();
+                                localStorage.setItem('tasks', JSON.stringify(tasksFromFirebase));
 
-                        // This can be downloaded directly:
-                        const xhr = new XMLHttpRequest();
-                        xhr.responseType = 'blob';
-                        xhr.onload = (event) => {
-                        const blob = xhr.response;
-                        console.log(blob)
-                        };
-                        // xhr.open('GET', url);
-                        // xhr.send();
-                        
+                                
+                                
+                          } else {
+                            console.log("No data available");
+                          }
+                        }).catch((error) => {
+                                tasksFromFirebase = "Can't do it"
+                          console.error(error);
+                        });
 
-
-                         //fetch(URL)-простой Get запрос - скачает содержимое по адресу URL
-                         //responce.json - декодирует ответ в JSON
-                        //  fetch(url).then(response => response.json()).then(result => console.log(result));
-
-                })
-                .catch((error) => {
-                        // A full list of error codes is available at
-                        // https://firebase.google.com/docs/storage/web/handle-errors
-                        switch (error.code) {
-                                case 'storage/object-not-found':
-                                        // File doesn't exist
-                                        break;
-                                case 'storage/unauthorized':
-                                        // User doesn't have permission to access the object
-                                        break;
-                                case 'storage/canceled':
-                                        // User canceled the upload
-                                        break;
-
-                                // ...
-
-                                case 'storage/unknown':
-                                        // Unknown error occurred, inspect the server response
-                                        break;
-                        }
-                });
-
+                        // ...
+                
+        
 }
 
-export function testfunc(){
-        alert("test function")
-}
 
 
 

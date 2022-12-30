@@ -1,3 +1,5 @@
+import {saveToFirebase} from '../firebase/js/firebase.js';
+
 //массив с задачами и их статусом 
 let tasks = [];
 
@@ -246,6 +248,7 @@ function doneTask(event) {
 //сохранение в localStorage
 function saveToLocalStorage() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
+    saveToFirebase(tasks);
 }
 
 //функция рендерит кнопки у новой задачи
@@ -472,9 +475,8 @@ function chekNullItemsInArray() {
     }
 };//END chekNullItemsInArray
 
-
-//функции для перетягивания задач
-function onDragStart(event) {
+//функции для перетягивания задач, запись window.name = function() - делает функцию глобальной - ее видно за перделами модуля
+window.onDragStart = function(event) {
     event
         .dataTransfer
         .setData('text/plain', event.target.id);
@@ -484,10 +486,10 @@ function onDragStart(event) {
     //   .style
     //   .border = '1px solid black';
 }
-function onDragOver(event) {
+window.onDragOver = function(event) {
     event.preventDefault();
 }
-function onDrop(event) {
+window.onDrop = function(event) {
 
     const id = event
         .dataTransfer
@@ -663,9 +665,7 @@ function saveTaskToEnd(parentNode, id) {
 }
 
 
-
 //получаем email из indexedDB firebase
-
 //открываем бд
 var openRequest = indexedDB.open('firebaseLocalStorageDb',1)
 
