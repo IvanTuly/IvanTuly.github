@@ -47,11 +47,19 @@ html, body, main {
 
 .login{
 	&__button{
-
+		background-color: red;
+		color: white;
+		padding: 5px;
+		border: 2px solid white;
+		border-radius: 5px;
 	}
 
-	&__user{
-
+	&__logOut{
+		background-color: red;
+		color: white;
+		padding: 5px;
+		border: 2px solid white;
+		border-radius: 5px;
 	}
 }
 

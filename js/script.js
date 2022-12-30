@@ -1,4 +1,4 @@
-import {saveToFirebase} from '../firebase/js/firebase.js';
+import {saveToFirebase, logOut} from '../firebase/js/firebase.js';
 
 //массив с задачами и их статусом 
 let tasks = [];
@@ -39,6 +39,7 @@ list_el.addEventListener('click', deleteTask);
 
 //отметка задачи как выполненной
 list_el.addEventListener('click', doneTask);
+
 
 // при клике в любом месте окна браузера вызываем функцию, которая удалит пустую строчку, если пользователь стер задачу
 window.addEventListener('click', deleteByClick)
@@ -685,9 +686,8 @@ openRequest.onsuccess = function(event){
     if (user.length !=0){
         // console.log('Got user');
         // console.log(user[0].value.email)
-        const userEmail = document.querySelector(".login__user");
-        userEmail.innerText = user[0].value.email;
-        userEmail.classList.remove("empty");
+        const userLogOut = document.querySelector(".login__logOut");
+        userLogOut.classList.remove("empty");
         const logInButton = document.querySelector(".login__button");
         logInButton.classList.add("empty")
 
@@ -705,6 +705,20 @@ openRequest.onsuccess = function(event){
 
     }
 };
+
+const logOutButton = document.querySelector(".login__logOut");
+
+logOutButton.addEventListener('click', logOutFunction);
+
+function logOutFunction(){
+    logOut();
+    const userLogOut = document.querySelector(".login__logOut");
+    userLogOut.classList.add("empty");
+    const logInButton = document.querySelector(".login__button");
+    logInButton.classList.remove("empty")
+
+}
+
 
 
 // });

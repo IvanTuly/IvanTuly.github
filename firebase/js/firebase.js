@@ -57,6 +57,9 @@ if (signUpButton != null) {
                                 const user = userCredential.user;
                                 console.log(user);
                                 alert("Registration successfully!!");
+                                
+                                window.location.href = '../../index.html';
+                                 
                                 //...
                         })
                         .catch((error) => {
@@ -80,7 +83,13 @@ if (logInButton != null) {
                         .then((userCredential) => {
                                 const user = userCredential.user;
                                 console.log(user);
-                                alert(user.email + "Login successfully!!!");
+                                
+                                setTimeout(function(){
+                                        window.location.href = '../../index.html';
+                                      }, 2 * 1000);
+                                
+                                     
+                                
                                 
                         }).catch((error) => {
                                 const errorCode = error.code;
@@ -93,26 +102,24 @@ if (logInButton != null) {
 };
 
 
-const logOutButton = document.querySelector(".header__logOut")
-//logOut
-if (logOutButton != null) {
-        logOutButton.addEventListener("click", () => {
-                signOut(auth).then(() => {
-                        console.log("Sign-out successful")
-                        alert("Sign-out successful")
+export function logOut(){
+        signOut(auth).then(() => {
+                console.log("Sign-out successful")
+                alert("Sign-out successful")
 
-                        // Sign-out successful.
-                }).catch((error) => {
-                        // An error happened.
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
+                // Sign-out successful.
+        }).catch((error) => {
+                // An error happened.
+                const errorCode = error.code;
+                const errorMessage = error.message;
 
-                        console.log(errorMessage);
-                        alert(errorMessage);
+                console.log(errorMessage);
+                alert(errorMessage);
 
-                });
         });
-};
+}
+//logOut
+
 
 // });
 

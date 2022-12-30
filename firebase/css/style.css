@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /*Обнуление*/
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -72,13 +73,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------*/
+.header {
+  padding: 10px 0 0 15px;
+}
+.header__backToDoList {
+  font-size: 25px;
+  background-color: #fff;
+  color: red;
+  font-weight: 600;
+}
+
 .content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: rgb(240, 240, 240);
+  background-color: white;
+  font-family: "Inter", sans-serif;
 }
 
 .signUp {
@@ -86,13 +98,13 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   width: 400px;
   padding: 20px;
-  border: 1px solid orange;
   background-color: #fff;
 }
 .signUp__head {
+  font-family: AlternateGothic;
   text-align: center;
   margin: 20px 0 40px 0;
-  font-size: 18px;
+  font-size: 60px;
   text-transform: uppercase;
   font-weight: 600;
 }
@@ -108,20 +120,28 @@ h1, h2, h3, h4, h5, h6 {
 .signUp__button {
   margin: 0 0 15px 0;
   color: white;
-  background-color: rgb(120, 177, 252);
-  padding: 5px 0;
+  background-color: rgb(255, 0, 0);
+  padding: 12px 0;
   font-size: 18px;
+  border-radius: 5px;
+}
+.signUp__button:hover {
+  background-color: black;
+  transition: all 1s 0s;
 }
 .signUp__logIn {
   display: flex;
   justify-content: center;
+  align-items: baseline;
 }
-.signUp_logInText {
-  padding: 0 10px 0 0;
+.signUp__logInText {
+  padding: 0 8px 0 0;
+  font-size: 12px;
 }
 .signUp__logInButton {
-  color: rgb(0, 102, 255);
+  color: rgb(255, 0, 0);
   background-color: #fff;
+  font-size: 12px;
 }
 
 .logIn {
@@ -129,13 +149,13 @@ h1, h2, h3, h4, h5, h6 {
   flex-direction: column;
   width: 400px;
   padding: 20px;
-  border: 1px solid orange;
   background-color: #fff;
 }
 .logIn__head {
+  font-family: AlternateGothic;
   text-align: center;
   margin: 20px 0 40px 0;
-  font-size: 18px;
+  font-size: 60px;
   text-transform: uppercase;
   font-weight: 600;
 }
@@ -148,26 +168,47 @@ h1, h2, h3, h4, h5, h6 {
 .logIn__button {
   margin: 0 0 15px 0;
   color: white;
-  background-color: rgb(120, 177, 252);
-  padding: 5px 0;
+  background-color: rgb(255, 0, 0);
+  padding: 12px 0;
   font-size: 18px;
+  border-radius: 5px;
+}
+.logIn__button:hover {
+  background-color: black;
+  transition: all 1s 0s;
 }
 .logIn__signUp {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .logIn_SignUpText {
-  padding: 0 10px 0 0;
+  padding: 0 8px 0 0;
+  font-size: 12px;
 }
 .logIn__SignUpButton {
-  color: rgb(0, 102, 255);
+  color: rgb(255, 0, 0);
   background-color: #fff;
+  font-size: 12px;
+}
+.logIn__forgotPass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 10px 0;
+}
+.logIn__forgotPassButton {
+  color: rgb(0, 0, 0);
+  background-color: #fff;
+  text-decoration: underline;
+  font-size: 12px;
 }
 
 input {
-  background-color: rgb(235, 235, 235);
+  background-color: white;
   font-size: 14px;
   padding: 12px 10px;
+  border: 1px solid rgb(230, 230, 230);
 }
 
 .logIn-unactive {
@@ -176,4 +217,11 @@ input {
 
 .signUp-unactive {
   display: none;
+}
+
+@font-face {
+  font-family: "AlternateGothic";
+  src: url("../../fonts/alternate-gothic-no1-d.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
 }/*# sourceMappingURL=style.css.map */

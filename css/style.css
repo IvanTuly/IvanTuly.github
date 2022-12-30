@@ -105,6 +105,21 @@ html, body, main {
   padding: 0 50px 0 0;
 }
 
+.login__button {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+.login__logOut {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
 .empty {
   display: none;
 }
