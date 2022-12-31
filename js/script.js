@@ -666,15 +666,13 @@ function saveTaskToEnd(parentNode, id) {
 }
 
 
-//получаем email из indexedDB firebase
+//проверяем авторизован ли пользователь
 //открываем бд
 var openRequest = indexedDB.open('firebaseLocalStorageDb',1)
-
 //если успешно
 openRequest.onsuccess = function(event){
     //получаем что внутри
     var db = event.target.result;
-
     //посылаем get запрос через транзакцию - так работает .getAll-все содержимое 
     const request = db.transaction('firebaseLocalStorage')
     .objectStore('firebaseLocalStorage')
@@ -690,7 +688,6 @@ openRequest.onsuccess = function(event){
         userLogOut.classList.remove("empty");
         const logInButton = document.querySelector(".login__button");
         logInButton.classList.add("empty")
-
     };
     };
 
@@ -706,10 +703,10 @@ openRequest.onsuccess = function(event){
     }
 };
 
+
+//реализация log out
 const logOutButton = document.querySelector(".login__logOut");
-
 logOutButton.addEventListener('click', logOutFunction);
-
 function logOutFunction(){
     logOut();
     const userLogOut = document.querySelector(".login__logOut");
@@ -723,10 +720,7 @@ function logOutFunction(){
 
 // });
 
-// import {saveToFirebase, getFileFromFirebase} from '../firebase/js/firebase.js';
 
-// getFromFirebase();
-// saveToFirebase();
 
 
 

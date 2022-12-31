@@ -84,6 +84,7 @@ html, body, main {
 }
 
 .menu {
+  padding: 0 15px;
   margin: 0 0 30px 0;
   display: flex;
   background-color: red;
@@ -99,7 +100,7 @@ html, body, main {
   text-transform: uppercase;
   font-size: 2.5em;
   color: white;
-  padding: 4px 0 0 0;
+  padding: 4px 0 0 50px;
 }
 .menu__login {
   padding: 0 50px 0 0;
@@ -169,14 +170,17 @@ html, body, main {
   display: flex;
   font-family: Inter;
   border-bottom: 1px solid #eaeaea;
-  height: 17px;
+  height: 25px;
   /* Параметры линии */
 }
 .dayTasks__content {
+  display: flex;
+  align-items: center;
   flex-grow: 1;
 }
 .dayTasks__actions {
   display: flex;
+  align-items: center;
 }
 .dayTasks__tasks {
   display: flex;
@@ -197,7 +201,8 @@ html, body, main {
 
 .text {
   text-overflow: ellipsis;
-  font-size: 10px;
+  font-size: 13px;
+  flex-grow: 1;
 }
 
 .task__date {
@@ -219,15 +224,15 @@ textarea {
   resize: none;
   height: 100%;
   width: 100%;
-  background-image: -webkit-linear-gradient(top, transparent, transparent 15.6px, #eaeaea 0);
-  -webkit-background-size: 100% 17px;
+  background-image: -webkit-linear-gradient(top, transparent, transparent 24.5px, #eaeaea 0);
+  -webkit-background-size: 100% 25px;
   /* background-size: 100% 50px; */
 }
 
 .button__delete {
   background-color: #fff;
   color: #d2d2d2;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .button__delete:hover {
@@ -236,9 +241,10 @@ textarea {
 }
 
 .button__done {
+  margin: 0 3px 0 0;
   background-color: #fff;
   color: #d2d2d2;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .button__done:hover {
@@ -278,7 +284,44 @@ textarea {
   .dayTasks__emptyArea {
     flex: 1 1 auto;
   }
+  .dayTasks__date {
+    font-size: 14px;
+  }
+  .dayTasks__data {
+    height: 30px;
+    padding: 0 10px 0 10px;
+  }
+  .dayTasks__emptyArea {
+    pointer-events: none;
+    display: block;
+    margin: 0 auto;
+    resize: none;
+    height: 100%;
+    width: 100%;
+    background-image: -webkit-linear-gradient(top, transparent, transparent 29.5px, #eaeaea 0);
+    -webkit-background-size: 100% 30px;
+    /* background-size: 100% 50px; */
+  }
   .text {
-    font-size: 12px;
+    font-size: 16px;
+  }
+  textarea {
+    display: none;
+  }
+  .button__delete {
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 50%;
+    width: 20px;
+  }
+  .button__delete:hover {
+    border: 1px solid darkred;
+  }
+  .button__done {
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 50%;
+    width: 20px;
+  }
+  .button__done:hover {
+    border: 1px solid darkgreen;
   }
 }/*# sourceMappingURL=style.css.map */

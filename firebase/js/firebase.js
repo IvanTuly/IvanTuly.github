@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 import { getStorage, getDownloadURL, uploadBytes } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
 import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
@@ -79,10 +79,12 @@ if (logInButton != null) {
                 const email = document.querySelector(".logIn__email").value;
                 const pass = document.querySelector(".logIn__password").value;
 
+                const loader = document.querySelector(".loader"); 
+                loader.classList.remove("empty");
+
                 signInWithEmailAndPassword(auth, email, pass)
                         .then((userCredential) => {
                                 const user = userCredential.user;
-                                console.log(user);
                                 
                                 setTimeout(function(){
                                         window.location.href = '../../index.html';
@@ -94,19 +96,38 @@ if (logInButton != null) {
                         }).catch((error) => {
                                 const errorCode = error.code;
                                 const errorMessage = error.message;
-
+                                loader.classList.add("empty");
                                 console.log(errorMessage);
                                 alert(errorMessage);
                         })
         });
 };
 
+const passwordReset = document.querySelector(".logIn__forgotPassButton");
+//reset password
+if (passwordReset != null){
+        document.querySelector(".logIn__forgotPassButton").addEventListener("click", () => { 
+                
+                const email = document.querySelector(".logIn__email").value;
+                sendPasswordResetEmail(auth, email)
+                .then(() => {
+                        // Password reset email sent!
+                        alert("password reset link send")
+                })
+                .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+                alert("invalid email")
+                }); 
+        }) 
+}
+
 
 export function logOut(){
         signOut(auth).then(() => {
-                console.log("Sign-out successful")
-                alert("Sign-out successful")
-
+                alert("logOut success")
+                uid=""
                 // Sign-out successful.
         }).catch((error) => {
                 // An error happened.
@@ -193,6 +214,10 @@ export function getFileFromFirebase(userUID) {
                 
         
 }
+
+
+
+
 
 
 
