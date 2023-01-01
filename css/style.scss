@@ -139,8 +139,8 @@ html, body, main {
 	&__actions {
 		display: flex;
 		align-items:center;
-		font-family: "M PLUS Rounded 1c";
-		font-weight: 700;
+		font-family: 'Varela Round', sans-serif;
+		
 	}
 
 	&__tasks {
@@ -245,6 +245,8 @@ textarea {
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,500;0,600;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 @media all and (max-width : 800px) {
 	html, body, main {
@@ -284,7 +286,7 @@ textarea {
 			height: 30px;
 			padding: 0 10px 0 10px;
 		}
-		
+
 		&__emptyArea {
 			pointer-events: none;
 			display: block;
@@ -311,23 +313,14 @@ textarea {
 	}
 
 	.button__delete{
-		border: 1px solid rgb(211, 211, 211);
-		border-radius: 50%;
+		font-size: 20px;
 		width: 22px;
-		margin: 0 0 0 4px;
-	}
-	.button__delete:hover{
-		border: 1px solid darkred;
+		margin: 0 0 0 2px;
 	}
 
 
 	.button__done{
-		border: 1px solid rgb(211, 211, 211);
-		border-radius: 50%;
+		font-size: 20px;
 		width: 22px;
 	  }
-	
-	.button__done:hover{
-		border: 1px solid darkgreen;
-	}
 }

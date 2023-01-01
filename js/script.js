@@ -256,7 +256,7 @@ function saveToLocalStorage() {
 function renderButtons(parent) {
     const taskHTML = `
         <div class="dayTasks__actions">
-        <button class="button__done" data-action="done">✓</button>
+        <button class="button__done" data-action="done">v</button>
         <button class="button__delete" data-action="delete">x</button>
       </div>`
     parent.insertAdjacentHTML('beforeend', taskHTML);
@@ -333,7 +333,7 @@ function renderSumOfTasks(taskDate) {
                   />
                 </div>
                 <div class="dayTasks__actions">
-                  <button class="button__done" data-action="done">✓</button>
+                  <button class="button__done" data-action="done">v</button>
                   <button class="button__delete" data-action="delete">x</button>
                 </div>
               </div>
