@@ -310,11 +310,9 @@ textarea {
   }
   .button__delete {
     font-size: 20px;
-    width: 22px;
-    margin: 0 0 0 2px;
   }
   .button__done {
     font-size: 20px;
-    width: 22px;
+    margin: 0 8px 0 0;
   }
 }/*# sourceMappingURL=style.css.map */
