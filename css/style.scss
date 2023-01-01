@@ -13,15 +13,21 @@ html, body, main {
 .wrapper {
 	display: flex;
 	flex-direction: column;
-
 	min-height: 100%;	
 }
 
 .menu {
+	padding: 0 15px;
 	margin: 0 0 30px 0;
+	display: flex;
+	background-color: red;
+	min-width: 100%;
+	align-items: center;
+	justify-content: center;
+
 	&__square {
-		background-color: red;
-		min-width: 100%;
+		flex: 1 1 auto;
+
 		height: 40px;
 
 		font-family: AlternateGothic;
@@ -30,8 +36,34 @@ html, body, main {
 		font-size: 2.5em;
 		color: white;
 
-		padding: 4px 0 0 0;
+		padding: 4px 0 0 50px;
 	}
+
+	&__login{
+		padding: 0 50px 0 0;
+	}
+}
+
+.login{
+	&__button{
+		background-color: red;
+		color: white;
+		padding: 5px;
+		border: 2px solid white;
+		border-radius: 5px;
+	}
+
+	&__logOut{
+		background-color: red;
+		color: white;
+		padding: 5px;
+		border: 2px solid white;
+		border-radius: 5px;
+	}
+}
+
+.empty{
+	display: none;
 }
 
 .footer {
@@ -50,7 +82,6 @@ html, body, main {
 
 .content {
 	flex: 1 1 auto;
-
 }
 
 .dayTasks {
@@ -94,17 +125,22 @@ html, body, main {
 		font-family: Inter;
 		border-bottom: 1px solid #eaeaea;
 
-		height: 17px;
+		height: 25px;
 		/* Параметры линии */
 
 	}
 
 	&__content {
+		display: flex;
+		align-items: center;
 		flex-grow: 1;
 	}
 
 	&__actions {
 		display: flex;
+		align-items:center;
+		font-family: "M PLUS Rounded 1c";
+		font-weight: 700;
 	}
 
 	&__tasks {
@@ -134,14 +170,13 @@ html, body, main {
 
 .text{
 	text-overflow: ellipsis;
-	font-size: 10px;
+	font-size: 13px;
+	flex-grow: 1;
 }
 
 .text:hover {
 
   }
-
-.empty {}
 
 
 //поле с датой у каждого дня
@@ -151,7 +186,6 @@ html, body, main {
 	font-size: 1em;
 	text-align: center;
 }
-
 
 .task-title--done {
 	text-decoration: line-through;
@@ -167,17 +201,17 @@ textarea {
 	width: 100%;
 
 	background-image:
-		-webkit-linear-gradient(top, transparent, transparent 15.6px, #eaeaea 0);
+		-webkit-linear-gradient(top, transparent, transparent 24.5px, #eaeaea 0);
 
-	-webkit-background-size: 100% 17px;
+	-webkit-background-size: 100% 25px;
 	/* background-size: 100% 50px; */
 }
 
 .button__delete{
 	background-color: #fff;
 	color: #d2d2d2;
-	font-size: 14px;
-
+	font-size: 15px;
+	
   }
   
   .button__delete:hover {
@@ -186,9 +220,10 @@ textarea {
   }
 
   .button__done{
+	margin: 0 3px 0 0;
 	background-color: #fff;
 	color: #d2d2d2;
-	font-size: 14px;
+	font-size: 15px;
 
   }
   
@@ -208,14 +243,8 @@ textarea {
 	font-weight: normal;
 }
 
-@font-face {
-	// название шрифта(чтобы не запутаться лучше указать название папки со шрифтом) 
-	font-family: "Inter";
-	// адрес шрифта и тип 
-	src: url("../fonts/Inter-VariableFont_slnt,wght.ttf") format("truetype");
-	font-style: normal;
-	font-weight: 200;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700&display=swap');
 
 @media all and (max-width : 800px) {
 	html, body, main {
@@ -246,10 +275,59 @@ textarea {
 		&__emptyArea {
 			flex: 1 1 auto;
 		}
+
+		&__date {
+			font-size: 14px;
+		}
+
+		&__data{
+			height: 30px;
+			padding: 0 10px 0 10px;
+		}
+		
+		&__emptyArea {
+			pointer-events: none;
+			display: block;
+			margin: 0 auto;
+			resize: none;
+			height: 100%;
+			width: 100%;
+	
+			background-image:
+				-webkit-linear-gradient(top, transparent, transparent 29.5px, #eaeaea 0);
+	
+			-webkit-background-size: 100% 30px;
+			/* background-size: 100% 50px; */
+		}
 	}
 
 	.text{
-		font-size: 12px;
+		font-size: 16px;
+		font-weight: 200;
 	}
 
+	textarea {
+		display: none;
+	}
+
+	.button__delete{
+		border: 1px solid rgb(211, 211, 211);
+		border-radius: 50%;
+		width: 22px;
+		margin: 0 0 0 4px;
+	}
+	.button__delete:hover{
+		border: 1px solid darkred;
+	}
+
+
+	.button__done{
+		border: 1px solid rgb(211, 211, 211);
+		border-radius: 50%;
+		width: 22px;
+	  }
+	
+	.button__done:hover{
+		border: 1px solid darkgreen;
+	}
 }
