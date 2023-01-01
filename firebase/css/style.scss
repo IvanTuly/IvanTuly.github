@@ -49,6 +49,12 @@
 			font-weight: 600;
 
 		}
+		
+		&__errorMessage{
+			color: red;
+			margin: 0 0 15px 0;
+			text-align: center;
+		}
 
 		&__email {
 			margin: 0 0 15px 0;
@@ -112,6 +118,12 @@
 			text-transform: uppercase;
 			font-weight: 600;
 
+		}
+
+		&__errorMessage{
+			color: red;
+			margin: 0 0 15px 0;
+			text-align: center;
 		}
 
 		&__email {

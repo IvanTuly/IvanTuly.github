@@ -50,25 +50,45 @@ if (signUpButton != null) {
                 const email = document.querySelector(".signUp__email").value;
                 const pass = document.querySelector(".signUp__password").value;
 
-                //for new registratiom
-                createUserWithEmailAndPassword(auth, email, pass)
+                const errorMessageNode = document.querySelector(".signUp__errorMessage");
+                errorMessageNode.classList.add("empty")
+
+                if (email != "" && pass != ""){
+                        //for new registratiom
+                        createUserWithEmailAndPassword(auth, email, pass)
                         .then((userCredential) => {
                                 //signed in
                                 const user = userCredential.user;
                                 console.log(user);
-                                alert("Registration successfully!!");
+
+                                //массив с задачами и их статусом 
+                                let tasks = [];
                                 
-                                window.location.href = '../../index.html';
-                                 
-                                //...
+                                if (localStorage.getItem('tasks')) {
+                                        //парсим JSON и записываем в массив tasks
+                                        tasks = JSON.parse(localStorage.getItem('tasks'));
+                                    }
+                                
+                                
+                                console.log(tasks)
+                                saveToFirebase(tasks);
+                        
+
+                                window.location.href = '../../index.html';      
                         })
                         .catch((error) => {
+                                errorMessageNode.classList.remove("empty")
                                 const errorCode = error.code;
                                 const errorMessage = error.message;
 
                                 console.log(errorMessage);
-                                alert(errorMessage);
+                                errorMessageNode.innerText = errorCode.slice(5);
                         });
+                } else{
+                        errorMessageNode.classList.remove("empty")
+                        errorMessageNode.innerText = "Enter email and password";
+                }
+
         });
 }
 
@@ -78,28 +98,41 @@ if (logInButton != null) {
         document.querySelector(".logIn__button").addEventListener("click", () => {
                 const email = document.querySelector(".logIn__email").value;
                 const pass = document.querySelector(".logIn__password").value;
+                const errorMessageNode = document.querySelector(".logIn__errorMessage");
+                errorMessageNode.classList.add("empty")
 
-                const loader = document.querySelector(".loader"); 
-                loader.classList.remove("empty");
+                if (email != "" && pass != ""){
+                        const loader = document.querySelector(".loader"); 
+                        loader.classList.remove("empty");
+        
 
-                signInWithEmailAndPassword(auth, email, pass)
-                        .then((userCredential) => {
-                                const user = userCredential.user;
-                                
-                                setTimeout(function(){
-                                        window.location.href = '../../index.html';
-                                      }, 2 * 1000);
-                                
-                                     
-                                
-                                
-                        }).catch((error) => {
-                                const errorCode = error.code;
-                                const errorMessage = error.message;
-                                loader.classList.add("empty");
-                                console.log(errorMessage);
-                                alert(errorMessage);
-                        })
+        
+                        signInWithEmailAndPassword(auth, email, pass)
+                                .then((userCredential) => {
+                                        const user = userCredential.user;
+                                        
+                                        setTimeout(function(){
+                                                window.location.href = '../../index.html';
+                                              }, 2 * 1000);
+                                        
+                                             
+                                        
+                                        
+                                }).catch((error) => {
+                                        errorMessageNode.classList.remove("empty")
+        
+                                        const errorCode = error.code;
+                                        const errorMessage = error.message;
+                                        loader.classList.add("empty");
+        
+                                        errorMessageNode.innerText = errorCode.slice(5);
+                                        console.log(errorMessage, errorCode);
+                                        // alert(errorMessage);
+                                })
+                } else {
+                        errorMessageNode.classList.remove("empty")
+                        errorMessageNode.innerText = "Enter email and password";
+                }
         });
 };
 
@@ -204,6 +237,7 @@ export function getFileFromFirebase(userUID) {
                                 
                           } else {
                             console.log("No data available");
+                            localStorage.removeItem('tasks');
                           }
                         }).catch((error) => {
                                 tasksFromFirebase = "Can't do it"
