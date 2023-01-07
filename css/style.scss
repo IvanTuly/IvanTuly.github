@@ -3,6 +3,9 @@
 // body::-webkit-scrollbar{
 // 	display: none;
 // }
+:root {
+	--main-color-scheme: red;
+  }
 
 html, body, main {
     min-height: 100%;
@@ -20,7 +23,7 @@ html, body, main {
 	padding: 0 15px;
 	margin: 0 0 30px 0;
 	display: flex;
-	background-color: red;
+	background-color: var(--main-color-scheme);
 	min-width: 100%;
 	align-items: center;
 	justify-content: center;
@@ -45,8 +48,9 @@ html, body, main {
 }
 
 .login{
+	margin: 0 10px 0 0;
 	&__button{
-		background-color: red;
+		background-color: var(--main-color-scheme);
 		color: white;
 		padding: 5px;
 		border: 2px solid white;
@@ -54,7 +58,7 @@ html, body, main {
 	}
 
 	&__logOut{
-		background-color: red;
+		background-color: var(--main-color-scheme);
 		color: white;
 		padding: 5px;
 		border: 2px solid white;
@@ -81,10 +85,22 @@ html, body, main {
 }
 
 .content {
-	flex: 1 1 auto;
+	margin: 0 10px;
+	display: flex;
+	flex-direction:row;
+	align-items:center;
 }
 
+.button_changeweek{
+	background-color: #fff;
+	font-size: 25px;
+	min-height:85vh;	
+}
+
+
 .dayTasks {
+	margin: 60px 0 0 0;
+	flex: 1 1 auto;
 
 	&__row {
 		margin: 10px;
@@ -92,10 +108,12 @@ html, body, main {
 		align-items: stretch;
 		height: 85vh;
 		overflow-y: hidden;
+		flex: 1 1 auto;
 	}
 
 	&__task {
-		flex: 0 0 14.285%;
+
+		flex: 0 1 14.285%;
 		padding: 0 10px 0;
 		border-left: 1px solid #eaeaea;
 	}
@@ -104,7 +122,7 @@ html, body, main {
 	}
 
 	&__task-today {
-		color: red;
+		color: var(--main-color-scheme);
 	}
 
 	&__weekday {
@@ -134,6 +152,7 @@ html, body, main {
 		display: flex;
 		align-items: center;
 		flex-grow: 1;
+	
 	}
 
 	&__actions {
@@ -165,6 +184,7 @@ html, body, main {
 	}
 
 }
+
 
 .container {}
 
@@ -234,6 +254,189 @@ textarea {
 
 
 
+// меню  и настройки
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--main-color-scheme);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.mainmenu-icon {
+	margin: 0 10px;
+	color: white;
+	font-size: 24px;
+	margin-right: 14px;
+	cursor: pointer;
+}
+
+.menu-title{
+	flex: 1 1 auto;
+	text-align: center;
+	color: white;
+	font-family: AlternateGothic;
+	font-size: 2.5em;
+	text-transform: uppercase;
+	padding: 0 0 0 25px;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+}
+
+.openmenu-icon{
+	margin: 0 10px;
+	color: #333;
+	font-size: 24px;
+	margin-right: 14px;
+	cursor: pointer;
+}
+
+.logo-name{
+	color: #333;
+	font-family: Inter;
+	font-size: 1.5em;
+	text-transform: uppercase;
+}
+
+
+nav .sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 260px;
+  padding: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+nav.open .sidebar {
+  left: 0;
+}
+.sidebar .sidebar-content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 16px;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 1000vh;
+  width: 200%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  background: rgba(0, 0, 0, 0.3);
+}
+nav.open ~ .overlay {
+  opacity: 1;
+  left: 260px;
+  pointer-events: auto;
+}
+
+nav .bottom-cotent{
+	display: flex;
+	align-items: center;
+}
+
+.list{
+	padding: 0 0 20px 0;
+	border-bottom: 1px solid #333;
+}
+.list:last-child{
+	padding: 10px 0 20px 0;
+}
+
+.colorChange{
+	display: flex;
+	flex-direction: column;
+	justify-content:flex-start;
+	&__Header{
+		color: #333;
+		font-size: 1.5em;
+		display: flex;
+		align-items: center;
+		font-family: Inter;
+		margin: 0 0 10px 0;
+	}
+	&__Buttons{
+		margin: 5 5 5 0px;
+
+	}
+}
+.colorButton{
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+
+	&__colorRed{
+		background-color: red;
+	}
+
+	&__colorBlack{
+		background-color: black;
+	}
+	&__colorGreen{
+		background-color: green;
+	}
+
+	&__colorBlue{
+		background-color: blue;
+	}
+	&__colorYellow{
+		background-color: yellow;
+	}
+
+	&__colorPink{
+		background-color: pink;
+	}
+	&__colorPurple{
+		background-color: purple;
+	}
+}
+
+.sizeChange{
+	display: flex;
+	flex-direction: column;
+	justify-content:flex-start;
+
+	&__header{
+		color: #333;
+		font-size: 1.5em;
+		display: flex;
+		align-items: center;
+		font-family: Inter;
+		margin: 0 0 10px 0;
+
+	}
+	&__slider{
+		margin: 0 0 10px 0;
+	}
+	&__example{
+		color: #333;
+		font-family: Inter;
+		
+	}
+}
+
+
+
+
+
+
+
+
 @font-face {
 	// название шрифта(чтобы не запутаться лучше указать название папки со шрифтом) 
 	font-family: "AlternateGothic";
@@ -254,11 +457,17 @@ textarea {
 		height: 100%;
 	}
 
+	.content{
+		display: flex;
+		align-items:stretch;
+	}
+
 	.container {}
 
 	.dayTasks {
 
 		&__row {
+			margin: 0;
 			flex-direction:column;
 			height: 100%;
 			overflow-y: auto;
@@ -321,4 +530,12 @@ textarea {
 		font-size: 20px;
 		margin: 0 8px 0 0;
 	  }
+
+	.button_changeweek{
+		padding: 0 7px;
+		background-color: rgb(253, 250, 250);
+		font-size: 25px;
+		text-align: center;
+
+	}
 }
