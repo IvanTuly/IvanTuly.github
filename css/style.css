@@ -352,7 +352,8 @@ nav.open .sidebar {
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
-  padding: 30px 16px;
+  margin: 0 13px;
+  padding: 30px 0px;
 }
 
 .overlay {
@@ -401,7 +402,9 @@ nav .bottom-cotent {
   margin: 0 0 10px 0;
 }
 .colorChange__Buttons {
-  margin: 5 5 5 0px;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 5px;
 }
 
 .colorButton {
