@@ -12,6 +12,7 @@ const web_page = document.querySelector(".wrapper");
 const list_el = document.querySelector(".dayTasks__row");
 //получаем текущую дату, чтобы сделать рендер текущей недели
 const date = new Date();
+let renderWeekDay = new Date();
 
 if (localStorage.getItem('tasks')) {
     //парсим JSON и записываем в массив tasks
@@ -284,9 +285,11 @@ function createEmptyTask(parent) {
 }
 
 //функция для рендера 7 блоков с днями недели с пн до вс, на вход передаем дату - получаем 7 блоков - дней недели
-function renderWeekTasks(date) {
+function renderWeekTasks(functionDate) {
+    let date = functionDate;
+    list_el.innerHTML = '';
     //для проверки сеггодняшнего дня, чтобы добавить ему класс today
-    const todayDay = date;
+    const todayDay = new Date();
     const todayDate =`${todayDay.getDate()} ${getMonthItem(todayDay)} ${todayDay.getFullYear()}`;
     //получаем дату понедельника этой недели
     let dayWeek = getMondayDate(date);
@@ -433,6 +436,7 @@ function getMonthItem(date) {
 
 //функция для выдова даты понедельника этой недели
 function getMondayDate(date) {
+    let newDate = new Date();
     //определяем текущий день
     const day = date.getDay();
     // создаем переменную для хранения мс
@@ -463,8 +467,8 @@ function getMondayDate(date) {
             date = null;
     }
     //возврашаем пн на этой неделе
-    date.setTime(dateMonday);
-    return date;
+    newDate.setTime(dateMonday);
+    return newDate;
 }//END getMondayDate
 
 function chekNullItemsInArray() {
@@ -664,6 +668,27 @@ function saveTaskToEnd(parentNode, id) {
     saveToLocalStorage();
 
 }
+
+
+//функции стрелок переключение недель. RenderWeekTasks - глобальная переменная - хранит один день недели, которая рендерится
+document.querySelector(".button_previousWeek").addEventListener('click', () =>{
+    let newDay = renderWeekDay.getTime()-604800000;
+    let date = new Date();
+    date.setTime(newDay);
+    renderWeekDay = date;
+    renderWeekTasks(date)   
+})
+document.querySelector(".button_nextWeek").addEventListener('click', () =>{
+    let newDay = renderWeekDay.getTime()+604800000;
+    let date = new Date();
+    date.setTime(newDay);
+    renderWeekDay = date;
+    renderWeekTasks(date)   
+})
+
+
+
+
 
 
 //проверяем авторизован ли пользователь
