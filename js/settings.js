@@ -23,6 +23,10 @@ menuBtn.addEventListener("click", () => {
 overlay.addEventListener("click", () => {
 navBar.classList.remove("open");
 });
+document.querySelector(".openmenu-icon").addEventListener("click", ()=>{
+    navBar.classList.remove("open");
+})
+
 
 //переключение цвета по кнопкам
 document.querySelector(".colorButton__colorRed").addEventListener("click", ()=>{
