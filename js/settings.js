@@ -22,13 +22,19 @@ document.documentElement.style.setProperty('--main-text-scheme', settings.colorT
 menuBtns.forEach((menuBtn) => {
     menuBtn.addEventListener("click", () => {
         navBar.classList.toggle("open");
+        const logInButton = document.querySelector(".button_previousWeek");
+        logInButton.classList.add("empty")
     });
 });
 overlay.addEventListener("click", () => {
     navBar.classList.remove("open");
+    const logInButton = document.querySelector(".button_previousWeek");
+    logInButton.classList.remove("empty")
 });
 document.querySelector(".openmenu-icon").addEventListener("click", () => {
     navBar.classList.remove("open");
+    const logInButton = document.querySelector(".button_previousWeek");
+    logInButton.classList.remove("empty")
 })
 
 
