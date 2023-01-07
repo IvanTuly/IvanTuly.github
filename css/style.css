@@ -78,6 +78,7 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------*/
 :root {
   --main-color-scheme: red;
+  --main-text-scheme: white;
 }
 
 html, body, main {
@@ -107,7 +108,7 @@ html, body, main {
   text-align: center;
   text-transform: uppercase;
   font-size: 2.5em;
-  color: white;
+  color: var(--main-text-scheme);
   padding: 4px 0 0 50px;
 }
 .menu__login {
@@ -119,16 +120,16 @@ html, body, main {
 }
 .login__button {
   background-color: var(--main-color-scheme);
-  color: white;
+  color: var(--main-text-scheme);
   padding: 5px;
-  border: 2px solid white;
+  border: 2px solid var(--main-text-scheme);
   border-radius: 5px;
 }
 .login__logOut {
   background-color: var(--main-color-scheme);
-  color: white;
+  color: var(--main-text-scheme);
   padding: 5px;
-  border: 2px solid white;
+  border: 2px solid var(--main-text-scheme);
   border-radius: 5px;
 }
 
@@ -294,7 +295,7 @@ nav {
 
 .mainmenu-icon {
   margin: 0 10px;
-  color: white;
+  color: var(--main-text-scheme);
   font-size: 24px;
   margin-right: 14px;
   cursor: pointer;
@@ -303,7 +304,7 @@ nav {
 .menu-title {
   flex: 1 1 auto;
   text-align: center;
-  color: white;
+  color: var(--main-text-scheme);
   font-family: AlternateGothic;
   font-size: 2.5em;
   text-transform: uppercase;
