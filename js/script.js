@@ -687,8 +687,21 @@ document.querySelector(".button_nextWeek").addEventListener('click', () =>{
 })
 
 
-
-
+//реализация фокусировки на пустое поле с задачей при клике на пустые задачи
+const wrapper = document.querySelector('.wrapper');
+wrapper.addEventListener('click', handleClick);
+function handleClick(e) {
+    console.log('click', e.target);
+      const emptyArea = e.target.querySelector(".dayTasks__emptyArea");
+      console.log(emptyArea)
+  
+      if (emptyArea != null){
+          const task = e.target.querySelector(".empty")
+          const taskField = task.querySelector(".text")
+          taskField.focus()
+          console.log(task)
+      }
+  }
 
 
 //проверяем авторизован ли пользователь
